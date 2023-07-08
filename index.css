@@ -1,0 +1,42 @@
+.form{
+   
+    height: 50%;
+    width:95%;
+}
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #a7b8ce, #735c7e);
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 1%;
+    border: 5px solid #626d77;
+    margin-bottom: 1%;
+    background-color: rgb(199, 182, 160);
+    height: 60%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.form-floating{
+    min-height: fit-content;
+    
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 2%;
+    width: 20%;
+    cursor: pointer;
+    background: #735c7e;
+    color: #fff;
+}
+body{
+    background-color: rgb(213, 248, 248);
+}
