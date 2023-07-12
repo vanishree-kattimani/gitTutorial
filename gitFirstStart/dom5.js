@@ -1,10 +1,14 @@
 var form = document.getElementById('addForm');
 var itemList=document.getElementById('items');
+var itemList1=document.getElementById('items');
 var filter = document.getElementById('filter');
 // Form submit event
 form.addEventListener('submit', addItem);
 //Delete Event
 itemList.addEventListener('click',removeItem);
+//Edit Event
+itemList1.addEventListener('click',editItem);
+
 //Filter Event
 filter.addEventListener('keyup',filterItems);
 
@@ -25,15 +29,24 @@ function addItem(e){
     var deleteBtn = document.createElement('button');
     //Add clsses to del button
     deleteBtn.className='btn btn-danger btn-sm float-right delete' ;
-
     //append text node
     deleteBtn.appendChild(document.createTextNode('X'));
-
     //append button to li
     li.appendChild(deleteBtn);
-
     //append li to list
     itemList.appendChild(li);
+
+    //create edit button element 
+    var editBtn = document.createElement('button');
+    //Add clsses to edit button
+    editBtn.className='btn btn-sm float-right edit' ;
+    //append text node
+    editBtn.appendChild(document.createTextNode('edit'));
+    //append button to li
+    li.appendChild(editBtn);
+    //append li to list
+    itemList.appendChild(li);
+    
 }
 
 //remove item
@@ -45,6 +58,8 @@ function removeItem(e){
       }
     }
   }
+  //edit item function
+
 
   // Filter Items
 function filterItems(e){
