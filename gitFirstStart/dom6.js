@@ -71,22 +71,15 @@ function filterItems(e){
     var text = e.target.value.toLowerCase();
     // Get list
     var items = itemList.getElementsByTagName('li');
-    var items1 = itemList1.getElementsByTagName('li');
+    var description = itemList1.getElementsByTagName('li');
     // Convert to an array
     Array.from(items).forEach(function(item){
       var itemName = item.firstChild.textContent;
-      if(itemName.toLowerCase().indexOf(text) != -1){
+      var description= item.childNodes[1].textContent;
+      if(itemName.toLowerCase().indexOf(text) != -1 ||description.toLowerCase().indexOf(text) != -1 ){
         item.style.display = 'block';
       } else {
         item.style.display = 'none';
       }
     });
-    Array.from(items1).forEach(function(item){
-        var itemName1 = item.secondChild.textContent;
-        if(itemName1.toLowerCase().indexOf(text) != -1){
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
   }
