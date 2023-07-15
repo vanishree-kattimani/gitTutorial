@@ -1,0 +1,52 @@
+#my-form label{
+    display:block;
+    
+}
+#my-form input[type='text']{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    
+}
+ul{
+    list-style: none;
+}
+ul li{
+    padding: 5px;
+    background: #f4f4f4;
+    margin: 5px 0;
+}
+.btn{
+    display:block;
+    background:#2a054e;
+    color:#fff;
+    border-radius: 5px;
+    padding:10px 15px;
+    width:100%;
+    border:0;
+}
+header{
+    background: #f4f4f4;
+    padding: 1rem;
+}
+
+
+.btn:hover{
+    background:#444;
+}
+.bg-dark{
+    background-color:#333;
+    color:#fff(0 95% 3%);
+}
+.error{
+    background:#a11717;
+    color:#fff;
+    padding:5px;
+    margin:5px;
+}
