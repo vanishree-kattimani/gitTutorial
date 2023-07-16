@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var form = document.getElementById('addForm');
 var itemList=document.getElementById('items');
 var itemList1=document.getElementById('description');
@@ -82,8 +82,7 @@ function filterItems(e){
       } else {
         item.style.display = 'none';
       }
-    });
-=======
+    }
 var form = document.getElementById('addForm');
 var itemList=document.getElementById('items');
 var itemList1=document.getElementById('description');

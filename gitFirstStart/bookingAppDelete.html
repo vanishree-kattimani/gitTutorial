@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+<title> login page</title>
+
+</head>
+<body >
+
+<form id="addForm" onsubmit="saveToLocalStorage(event)">
+<header>
+    <h1>Add User</h1>
+</header>  
+
+<label>Name:</label>
+<input type="text" name="username" required/>
+<label>Email:</label>
+<input type="text"  name="emailId" required />
+<button name="input">Submit</button>
+</form>
+
+<ul id="listofitems">
+    
+</ul>
+<script type="text/javascript">
+
+function saveToLocalStorage(event){
+event.preventDefault();
+const name = event.target.username.value;
+const email=event.target.emailId.value;
+const btn=event.target.deleteBtn;
+const obj={name,email};
+localStorage.setItem(obj.email,JSON.stringify(obj));
+localStorage.setItem(obj,btn);
+showuseronScreen(obj);
+}
+function showuseronScreen(obj)
+{
+    const parentElem=document.getElementById('listofitems');
+    const childElem=document.createElement('li');
+    childElem.textContent=obj.name+'-'+obj.email;
+    
+    //delete event
+    const deleteBtn = document.createElement('input');
+    deleteBtn.type="button";
+    deleteBtn.value="Delete";
+    deleteBtn.onclick  =() =>{
+      localStorage.removeItem(obj.email);
+      parentElem.removeChild(childElem);
+    }
+    childElem.appendChild(deleteBtn);
+    parentElem.appendChild(childElem);
+  }
+</script>
+</body>
+</html>

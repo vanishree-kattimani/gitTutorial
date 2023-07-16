@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //GET THE ELEMENTS BY ID//
 var header=document.getElementById('main-header');
 header.style.borderBottom='solid 3px #000';
@@ -79,7 +79,7 @@ newNode.style.fontWeight='bold';
 newNode.style.color='red';
 var list = document.getElementById("items");
 list.insertBefore(newNode, list.children[0]);
-=======
+
 //GET THE ELEMENTS BY ID//
 var header=document.getElementById('main-header');
 header.style.borderBottom='solid 3px #000';
@@ -160,4 +160,3 @@ newNode.style.fontWeight='bold';
 newNode.style.color='red';
 var list = document.getElementById("items");
 list.insertBefore(newNode, list.children[0]);
->>>>>>> fce9fc9b7770d930230655e6ed3de4f498a0c805
