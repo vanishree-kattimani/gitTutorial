@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+<title> login page</title>
+
+</head>
+<body >
+
+<form id="addForm" onsubmit="saveToLocalStorage(event)">
+<header>
+    <h1>Add User</h1>
+</header>  
+
+<label>Name:</label>
+<input type="text" id="sfield" name="username" required/>
+<label>Email:</label>
+<input type="text" id="sfield1"  name="emailId" required />
+<button name="input">Submit</button>
+</form>
+
+<ul id="listofitems">
+    
+</ul>
+<script type="text/javascript">
+
+function saveToLocalStorage(event){
+event.preventDefault();
+const name = event.target.username.value;
+const email=event.target.emailId.value;
+const btn=event.target.deleteBtn;
+const obj={name,email};
+localStorage.setItem(obj.email,JSON.stringify(obj));
+localStorage.setItem(obj,btn);
+showuseronScreen(obj);
+}
+function showuseronScreen(obj)
+{
+    const parentElem=document.getElementById('listofitems');
+    const childElem=document.createElement('li');
+    childElem.textContent=obj.name+'-'+obj.email;
+    
+    //delete event
+    const deleteBtn = document.createElement('input');
+    deleteBtn.type="button";
+    deleteBtn.value="Delete";
+    deleteBtn.onclick  =() =>{
+      localStorage.removeItem(obj.email);
+      parentElem.removeChild(childElem);
+    }
+
+     //edit event
+    const editBtn = document.createElement('input');
+    editBtn.type="button";
+    editBtn.value="Edit";
+    editBtn.onclick  =() =>{
+      localStorage.removeItem(obj.email);
+      parentElem.removeChild(childElem);
+  //  document.getElementById('sfield').focus();     //name edit
+     document.getElementById('sfield1').focus();     //email edit
+    }
+    childElem.appendChild(deleteBtn);
+    childElem.appendChild(editBtn);
+    parentElem.appendChild(childElem);
+  }
+</script>
+</body>
+</html>
