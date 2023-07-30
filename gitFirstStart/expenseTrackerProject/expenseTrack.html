@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+<title> Expense Tracker</title>
+
+</head>
+<body >
+
+<form id="addForm" onsubmit="saveToLocalStorage(event)">
+<header>
+    <h1>Expense Tracker</h1>
+</header>  
+
+<label>Choose Expense Amount:</label>
+<input type="text" id="sfield" name="expenseAmt" required/>
+<label>Choose Descriptions:</label>
+<input type="text" id="sfield1"  name="description" required />
+<label>Choose a Category:</label>
+<select name="Category" id="Categ">
+  <option value="Movie">Movie</option>
+  <option value="Fuel">Fuel</option>
+  <option value="Food">Food</option>
+  <option value="Shopping">Shopping</option>
+</select>
+<button name="input">Add Expense</button>
+</form>
+
+<ul id="listofitems">
+    
+</ul>
+<script type="text/javascript">
+
+function saveToLocalStorage(event){
+event.preventDefault();
+const ExpenseAmt = event.target.expenseAmt.value;
+const descript=event.target.description.value;
+const categ=event.target.Category.value;
+const btn=event.target.deleteBtn;
+//const edit=event.target.editBtn;
+const obj={ExpenseAmt,descript,categ};
+localStorage.setItem(obj.descript,JSON.stringify(obj));
+localStorage.setItem(obj,btn);
+showuseronScreen(obj);
+}
+function showuseronScreen(obj)
+{
+    const parentElem=document.getElementById('listofitems');
+    const childElem=document.createElement('li');
+    childElem.textContent=obj.ExpenseAmt+'-'+obj.descript+'-'+obj.categ;
+    
+    //delete event
+    const deleteBtn= document.createElement('input');
+    deleteBtn.type="button";
+    deleteBtn.value="Delete Expense";
+    deleteBtn.onclick  =() =>{
+      localStorage.removeItem(obj.descript);
+      parentElem.removeChild(childElem);
+    }
+
+     //edit event
+    const editBtn = document.createElement('input');
+    editBtn.type="button";
+    editBtn.value="Edit Expense";
+    editBtn.onclick  =() =>{
+      localStorage.removeItem(obj.descript);
+      parentElem.removeChild(childElem);
+      document.getElementById('sfield').focus();     //expense amt edit
+    // document.getElementById('sfield1').focus();     //description edit
+    }
+    childElem.appendChild(deleteBtn);
+    childElem.appendChild(editBtn);
+    parentElem.appendChild(childElem);
+  }
+</script>
+</body>
+</html>
