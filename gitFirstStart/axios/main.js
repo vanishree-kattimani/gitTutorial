@@ -56,7 +56,7 @@ function getTodos() {
   }
   
   // SIMULTANEOUS DATA
-  function getData() {
+  /*function getData() {
     axios
       .all([
         axios.get('https://jsonplaceholder.typicode.com/todos'),
@@ -217,4 +217,4 @@ function getTodos() {
     .addEventListener('click', transformResponse);
   document.getElementById('error').addEventListener('click', errorHandling);
   document.getElementById('cancel').addEventListener('click', cancelToken);
-  
+  */
