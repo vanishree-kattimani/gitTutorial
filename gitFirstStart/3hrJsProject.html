@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Await</title>
+</head>
+<body>
+    <h1>Seller Page</h1>
+    <form id="addItemForm" onsubmit="handleFormSubmit(event)">
+        <label>Price</label>
+        <input type="number" id="price" name="price" required><br><br>
+
+        <label>Product Name</label>
+        <input type="text" id="productName" name="productName"><br><br>
+
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="electronic">Electronic Item</option>
+            <option value="food">Food Item</option>
+            <option value="skincare">Skincare Item</option>
+        </select><br><br>
+        <button type="submit">Add Item</button>
+
+
+    </form>
+    <h2>Electronic Items</h2>
+    <ul id="electronicItems"></ul>
+
+    <h2>Food Items</h2>
+    <ul id="foodItems"></ul>
+
+    <h2>Skincare Items</h2>
+    <ul id="skincareItems"></ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function handleFormSubmit(event){
+            event.preventDefault();
+
+            const price=document.getElementById("price").value;
+            const productName=document.getElementById("productName").value;
+            const category=document.getElementById("category").value;
+
+            const newItem={
+                price,productName,category
+            }
+            try{
+                const response=await axios.post("https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData",newItem)
+                const Item=response.data;
+                await addItemToList(Item);
+                document.getElementById("addItemForm").reset();
+            }
+            catch(error){
+                console.log("Error in Adding Item" , error);
+            }
+        }
+
+        async function addItemToList(item){
+            const itemElement=document.createElement("li");
+            itemElement.textContent=`Price:${item.price}, Product Name:${item.productName}`;
+
+            const deletebutton=document.createElement("button");
+            deletebutton.textContent="Delete";
+            deletebutton.addEventListener("click",async()=>{
+                try{
+                    await deleteItem(item._id)
+                    itemElement.remove();
+
+                }
+                catch(error){
+                    console.log("Error in Deleting Item",error)
+                }
+            })
+            itemElement.appendChild(deletebutton);
+
+       if (item.category === "electronic") {
+        document.getElementById("electronicItems").appendChild(itemElement);
+      } else if (item.category === "food") {
+        document.getElementById("foodItems").appendChild(itemElement);
+      } else if (item.category === "skincare") {
+        document.getElementById("skincareItems").appendChild(itemElement);
+      }
+        }
+
+
+        async function deleteItem(itemId){
+
+            try{
+                await axios.delete(`https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData/${itemId}`)
+                console.log("Item deleted Successfully");
+            }
+            catch(error){
+                console.log("Error in deleting" , error);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded",async()=>{
+            try{
+                const response = await axios.get("https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData");
+            const items = response.data;
+            console.log(response.data);
+            items.forEach(item => {
+                addItemToList(item);
+                console.log(item);
+            });
+        } catch (error) {
+            console.log("Error fetching seller data:", error);
+        }
+        })
+    </script>
+
+</body>
+</html>
