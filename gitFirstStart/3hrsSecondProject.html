@@ -38,7 +38,7 @@ function addUserList(event)
     // console.log(candy,description,price,quantity)
     const obj={candy,description,price,quantity}
 
-    axios.post('https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData',obj)
+    axios.post('https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData',obj)
     .then((res)=>{
         showUseronScreen(res.data)
         console.log(res)
@@ -51,10 +51,10 @@ function addUserList(event)
 }
 
 
-///functionget all 
+//function  get all 
 function getalluser(userid)
 {
-    axios.get(`https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData/${userid}`)
+    axios.get(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${userid}`)
 .then((res) =>{
     showUseronScreen(res.data)   
 })
@@ -67,7 +67,7 @@ function getalluser(userid)
 
 //Dom content Loaded
 window.addEventListener("DOMContentLoaded",() => {
-    axios.get('https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData')
+    axios.get('https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData')
 .then((res) =>{
     console.log(res.data);
     // data is in the format of array
@@ -111,7 +111,7 @@ const parentNode=document.getElementById('listofitems')
     if(quan>0)
     {
 
-        axios.put(`https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData/${userid}`,{
+        axios.put(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${userid}`,{
     "candy": candy,
     "description": description,
     "price": price,
@@ -142,7 +142,7 @@ function buyTwo(userid,candy,description,price,quantity)
     if(quan>0)
     {
 
-        axios.put(`https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData/${userid}`,{
+        axios.put(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${userid}`,{
     "candy": candy,
     "description": description,
     "price": price,
@@ -173,7 +173,7 @@ function buyThree(userid,candy,description,price,quantity)
     if(quan>0)
     {
 
-    axios.put(`https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData/${userid}`,{
+    axios.put(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${userid}`,{
     "candy": candy,
     "description": description,
     "price": price,
@@ -200,11 +200,11 @@ function buyThree(userid,candy,description,price,quantity)
 ///deleteUsers
 function deleteUser(userid)
 {
-axios.delete(`https://crudcrud.com/api/ffb7ff8eb930454eacaa49366231d7bf/appointmentData/${userid}`)
+axios.delete(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${userid}`)
 .then((response)=>{
     removeUser(userid)
 }).catch((err)=>{
-///if it error occured
+//if it error occured
     document.body.innerHTML= document.body.innerHTML+"<h4>Something Went Wrong</h4>"
     console.log(err)
                })

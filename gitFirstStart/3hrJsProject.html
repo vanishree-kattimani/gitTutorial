@@ -46,7 +46,7 @@
                 price,productName,category
             }
             try{
-                const response=await axios.post("https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData",newItem)
+                const response=await axios.post("https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData",newItem)
                 const Item=response.data;
                 await addItemToList(Item);
                 document.getElementById("addItemForm").reset();
@@ -87,7 +87,7 @@
         async function deleteItem(itemId){
 
             try{
-                await axios.delete(`https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData/${itemId}`)
+                await axios.delete(`https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData/${itemId}`)
                 console.log("Item deleted Successfully");
             }
             catch(error){
@@ -97,7 +97,7 @@
 
         window.addEventListener("DOMContentLoaded",async()=>{
             try{
-                const response = await axios.get("https://crudcrud.com/api/65395948d46247c5afa2e1df41962697/appointmentData");
+                const response = await axios.get("https://crudcrud.com/api/6379be5875e14b22ba95639b2c4cc4f7/appointmentData");
             const items = response.data;
             console.log(response.data);
             items.forEach(item => {
