@@ -6,7 +6,7 @@
 
   if(url=='/') 
   {
-    res.write('<html><title>Create server</title><body><h2>Dhinesh Welcome Create server Buddy  !</h2></body></html');
+    res.write('<html><title>Create server</title><body><h2> Welcome Create server Buddy  !</h2></body></html');
   }
 
   if(url==='/home')
