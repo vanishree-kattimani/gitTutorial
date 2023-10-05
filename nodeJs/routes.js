@@ -1,15 +1,12 @@
-const http =require('http')
-const fs=require('fs');
+const fs=require('fs')
 
-
-
-const server = http.createServer((req,res)=>{
+const requestHandle=(req,res)=>{
     const url=req.url;
     const method=req.method;
 
     if(url=='/')
     {
-        fs.readFile("Messagetext.txt",{encoding:"utf-8" },(err,data)=>{
+        fs.readFile("Messagetext.txt",(err,data)=>{
             if(err)
             {
                 console.log(err)
@@ -17,7 +14,7 @@ const server = http.createServer((req,res)=>{
      
         console.log('datafromfile'+data)
         res.write('<html>');
-        res.write('<title>Enter message</title>');
+        res.write('<title>clean up code</title>');
        res.write(`<body><h2>${data}</h2><form action="/message" method="POST"><input type="text" name="message"></input><button type="submit">SEND</button></form></body>`);
        res.write('</html>');
        return res.end();
@@ -28,8 +25,11 @@ const server = http.createServer((req,res)=>{
     if(url=='/message' && method=='POST')
     {
         const body =[];
+
         req.on('data', (chunk)=>{
+
             body.push(chunk);
+           
         });
 
 req.on('close',()=>{
@@ -46,6 +46,11 @@ return res.end()
     }
 
 
-});
+}
 
-server.listen(3000);
+// moduler.exports={
+    
+// }
+
+module.exports.handler=requestHandle;
+module.exports.someText='NodeJS'
