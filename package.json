@@ -1,0 +1,18 @@
+{
+  "name": "webprojects",
+  "version": "1.0.0",
+  "description": "\"complete guide to node js\"",
+  "main": "Routing.js",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "nodeman": "^1.1.2",
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Routing.js",
+    "start-server": "node Routing.js"
+  },
+  "author": "Vani",
+  "license": "ISC"
+}
