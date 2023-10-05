@@ -5,7 +5,6 @@
   "main": "Routing.js",
   "dependencies": {
     "colors": "^1.4.0",
-    "nodeman": "^1.1.2",
     "nodemon": "^3.0.1"
   },
   "scripts": {
@@ -14,5 +13,8 @@
     "start-server": "node Routing.js"
   },
   "author": "Vani",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodeman": "^1.1.2"
+  }
 }
