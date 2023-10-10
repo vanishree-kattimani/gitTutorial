@@ -3,12 +3,12 @@ const bodyParser=require('body-parser');
 
 const app=express();
 
-const adminRoutes=require('./routes/admin');
-const shopRoutes=require('./routes/shop');
+const adminRoutes=require('./chatgroup/chat');
+const shopRoutes=require('./chatgroup/login');
 
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.use('/admin',adminRoutes);
+app.use('/chat',adminRoutes);
 app.use(shopRoutes);
 
 app.use((req,res,next)=>{
